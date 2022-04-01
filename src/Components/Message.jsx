@@ -1,37 +1,59 @@
 import React, { useState, useEffect } from "react"
+import { AUTOR } from "./common"
 import MessageList from './MessageList'
 
 
 const Message = () => {
 
+
+
     const [messages, setMessages] =
-        useState([])
+        useState([
+
+        ])
 
     const [userName, setNames] = useState()
     const [userMessage, setUserMessages] = useState()
 
     const addMessage = (e) => {
-        e.preventDefault()
+        console.log(e)
+        // e.preventDefault()
         const newMessage = {
             id: Date.now(),
             userName,
             userMessage
         }
         console.log(newMessage)
+
+
         setMessages([...messages, newMessage])
         setNames('')
         setUserMessages('')
 
     }
 
+
+
     useEffect(() => {
 
         setTimeout(() => {
-            let postMes = '<h1 id="tag" > У Вас новое сообщение! <h1/>'
-            document.getElementById('title').insertAdjacentHTML('beforeBegin', postMes);
-            setTimeout(() => {
-                document.getElementById('tag').remove();
-            }, 1500);
+
+
+            if (messages[messages.length - 1].userName == AUTOR.me) {
+                console.log(messages[messages.length - 1].userName)
+                addMessage
+                    ({
+                        id: Date.now(),
+                        userName: 'Bot',
+                        userMessage: 'Привет!'
+                    })
+            }
+
+            // let postMes = '<h1 id="tag" > У Вас новое сообщение! <h1/>'
+            // document.getElementById('title').insertAdjacentHTML('beforeBegin', postMes);
+            // setTimeout(() => {
+            //     document.getElementById('tag').remove();
+            // }, 1500);
         }, 1500);
     }, [messages])
 
