@@ -3,7 +3,9 @@ import { AUTOR } from "./common"
 import MessageList from './MessageList'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
+import { List, ListItem } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import CommentIcon from '@mui/icons-material/Comment';
 
 const Message = () => {
 
@@ -11,15 +13,19 @@ const Message = () => {
 
     const [messages, setMessages] =
         useState([
+            { id: 164897631820, userMessage: "ewgegw", userName: "Alex" },
+            { id: 16489763182, userMessage: "ewgegw", userName: "Alex" }],
+            [{ id: 1648976318, userMessage: "ewgegw", userName: "Alex" }],
+            [{ id: 164897631, userMessage: "ewgegw", userName: "Ale" }],
 
-        ])
+        )
 
     const [userName, setNames] = useState()
     const [userMessage, setUserMessages] = useState()
 
     const addMessage = (e) => {
         console.log(e)
-        // e.preventDefault()
+
         if (e.key === 'Enter' || e.type === 'click') {
 
             const newMessage = {
@@ -67,8 +73,29 @@ const Message = () => {
 
 
     return (
+        <div className="workSpace">
+            <div className="chatList">
+                <div>
+                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                        {
+                            messages.map((chat, userName, id) => (
+                                <ListItem
+                                    secondaryAction={
+                                        <IconButton edge="end" aria-label="comments">
+                                            <CommentIcon />
+                                        </IconButton>
+                                    }
+                                    disablePadding
+                                >
+                                    ID: {chat.id}<br /> Имя: {chat.userName}   <hr /></ListItem>
 
-        <div>
+
+                            )
+                            )
+                        }
+                    </List>
+                </div>
+            </div>
             <div className="userPage">
                 <div className="userInput">
                     <TextField id="margin-normal" margin="normal" label="Введите имя" variant="outlined"
@@ -98,6 +125,7 @@ const Message = () => {
             <MessageList props={messages} title="Сообщения" />
 
         </div>
+
     )
 }
 
