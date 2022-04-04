@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.sass';
-
+import Message from './Components/Message'
 
 
 function App() {
+
+    
+
     return (
+        
     <div className="Text">
-        Message
+        
+    <Message />
+ 
+
+
     
     </div>
    
