@@ -49,7 +49,7 @@ const Message = () => {
         setTimeout(() => {
 
 
-            if (messages[messages.length - 1].userName == AUTOR.me) {
+            if (messages[messages.length - 1].userName === AUTOR.me) {
                 console.log(messages[messages.length - 1].userName)
 
                 const newMessage = {
@@ -73,59 +73,57 @@ const Message = () => {
 
 
     return (
-        <div className="workSpace">
-            <div className="chatList">
-                <div>
-                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                        {
-                            messages.map((chat, userName, id) => (
-                                <ListItem
-                                    secondaryAction={
-                                        <IconButton edge="end" aria-label="comments">
-                                            <CommentIcon />
-                                        </IconButton>
-                                    }
-                                    disablePadding
-                                >
-                                    ID: {chat.id}<br /> Имя: {chat.userName}   <hr /></ListItem>
+        <>
+
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                {
+                    messages.map((chat, userName, id) => (
+                        <ListItem
+                            secondaryAction={
+                                <IconButton edge="end" aria-label="comments">
+                                    <CommentIcon />
+                                </IconButton>
+                            }
+                            disablePadding
+                        >
+                            ID: {chat.id}<br /> Имя: {chat.userName}   <hr /></ListItem>
 
 
-                            )
-                            )
-                        }
-                    </List>
-                </div>
-            </div>
-            <div className="userPage">
-                <div className="userInput">
-                    <TextField id="margin-normal" margin="normal" label="Введите имя" variant="outlined"
+                    )
+                    )
+                }
+            </List>
 
-                        type="text"
-                        value={userName}
-                        onChange={
-                            event => setNames(event.target.value)}
-                        onKeyPress={addMessage}>
 
-                    </TextField>
-                </div>
-                <div className="userInput">
-                    <TextField id="margin-normal" margin="normal" label="Введите cообщение" variant="outlined"
-                        placeholder="Введите cообщение"
-                        type="text"
-                        value={userMessage}
-                        onChange={
-                            event => setUserMessages(event.target.value)}
-                        onKeyPress={addMessage}>
 
-                    </TextField>
-                </div>
-                <Button size="medium" variant="outlined" id="userButton" className="userButton" onClick={addMessage}>Добавить сообщение</Button>
-                <br />
-            </div >
+            <TextField id="margin-normal" margin="normal" label="Введите имя" variant="outlined"
+
+                type="text"
+                value={userName}
+                onChange={
+                    event => setNames(event.target.value)}
+                onKeyPress={addMessage}>
+
+            </TextField>
+
+
+            <TextField id="margin-normal" margin="normal" label="Введите cообщение" variant="outlined"
+                placeholder="Введите cообщение"
+                type="text"
+                value={userMessage}
+                onChange={
+                    event => setUserMessages(event.target.value)}
+                onKeyPress={addMessage}>
+
+            </TextField>
+
+            <Button size="medium" variant="outlined" id="userButton" className="userButton" onClick={addMessage}>Добавить сообщение</Button>
+            <br />
+
             <MessageList props={messages} title="Сообщения" />
 
-        </div>
 
+        </>
     )
 }
 
