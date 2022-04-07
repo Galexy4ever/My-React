@@ -1,6 +1,7 @@
 import React from "react";
-// import './App.sass';
-import Message from './Components/Message'
+import './App.sass';
+// import Message from './Components/Message'
+import Router from "./pages/Router";
 
 
 function App() {
@@ -8,12 +9,14 @@ function App() {
     
 
     return (
-        
     
         
-    <Message />
+    
+    <div className="App">
+    <Router /> 
+  
  
-
+    </div>
 
     
    

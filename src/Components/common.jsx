@@ -1,4 +1,4 @@
-export const AUTOR = {
+export const AUTHOR = {
     me: 'Alex',
     bot: 'bot'
 }

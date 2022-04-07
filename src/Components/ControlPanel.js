@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { AUTOR } from "./common"
-import MessageList from './MessageList'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { List, ListItem } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
+import React, { useState, useEffect } from 'react';
 
-
-const Message = () => {
-
-
-
+const ControlPanel = () => {
     const [messages, setMessages] =
         useState([
             { id: 164897631820, userMessage: "ewgegw", userName: "Alex" },
@@ -43,14 +37,12 @@ const Message = () => {
         }
     }
 
-
-
     useEffect(() => {
 
         setTimeout(() => {
 
 
-            if (messages[messages.length - 1].userName === AUTOR.me) {
+            if (messages[messages.length - 1].userName === AUTHOR.me) {
                 console.log(messages[messages.length - 1].userName)
 
                 const newMessage = {
@@ -63,22 +55,12 @@ const Message = () => {
 
             }
 
-            // let postMes = '<h1 id="tag" > У Вас новое сообщение! <h1/>'
-            // document.getElementById('title').insertAdjacentHTML('beforeBegin', postMes);
-            // setTimeout(() => {
-            //     document.getElementById('tag').remove();
-            // }, 1500);
         }, 1500);
     }, [messages])
 
-
-
     return (
-        <>
-
-
-
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', color: 'text.primary' }}>
+    <div>
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', color: 'text.primary' }}>
                 {
                     messages.map((chat, userName, id) => (
                         <ListItem
@@ -95,40 +77,34 @@ const Message = () => {
                     )
                     )
                 }
-            </List>
+        </List>
+        <TextField id="margin-normal" margin="normal" label="Введите имя"
 
 
+        type="text"
+        value={userName}
+        onChange={
+        event => setNames(event.target.value)}
+        onKeyPress={addMessage}>
 
-            <TextField id="margin-normal" margin="normal" label="Введите имя"
-
-
-                type="text"
-                value={userName}
-                onChange={
-                    event => setNames(event.target.value)}
-                onKeyPress={addMessage}>
-
-            </TextField>
+        </TextField>
 
 
-            <TextField id="margin-normal" margin="normal" label="Введите cообщение" variant="outlined"
-                placeholder="Введите cообщение"
-                type="text"
-                value={userMessage}
-                onChange={
-                    event => setUserMessages(event.target.value)}
-                onKeyPress={addMessage}>
+        <TextField id="margin-normal" margin="normal" label="Введите cообщение" variant="outlined"
+        placeholder="Введите cообщение"
+        type="text"
+        value={userMessage}
+        onChange={
+            event => setUserMessages(event.target.value)}
+        onKeyPress={addMessage}>
 
-            </TextField>
+        </TextField>        
 
-            <Button size="medium" variant="outlined" id="userButton" className="userButton" onClick={addMessage}>Добавить сообщение</Button>
-            <br />
-
-            <MessageList props={messages} title="Сообщения" />
-
-
-        </>
+        <Button size="medium" variant="outlined" id="userButton" className="userButton" onClick={addMessage}>Добавить сообщение
+        </Button>
+        <br />
+    </div>
     )
 }
 
-export default Message
+export default ControlPanel
