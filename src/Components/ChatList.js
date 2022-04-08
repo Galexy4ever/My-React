@@ -24,9 +24,12 @@ const ChatList = ({chats}) => {
                             <ListItemText primary =  {chats[chat].name} />
                 
                     </ListItem>  
+                    
                     </Link>
                     ))}
+                    
                 </List>
+                
         </div>
     )
 }
