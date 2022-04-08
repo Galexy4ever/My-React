@@ -1,5 +1,8 @@
 // import { useParams } from "react-router-dom"
-import { ListItem } from "@mui/material"
+import { Link } from "@mui/material/"
+import { ListItem} from "@mui/material"
+import { ListItemText } from '@mui/material';
+
 
 const ChatList = ({chats}) => {
 
@@ -7,11 +10,21 @@ const ChatList = ({chats}) => {
     return (
         <div>
             <h1>ChatList</h1>
-            {Object.keys(chats).map((chat, index) => {
-              <ListItem key={index}>
-                {chats[chat].name}
+            
+            {Object.keys(chats).map((chat, index) => (
+                <Link to = {'/chats/${chat}'} key={index} >
+                
+              <ListItem key={index}
+              >
+                  <ListItemText primary =  {chats[chat].name} >
+                  
+              
+              </ListItemText>
+               
               </ListItem>  
-            })}
+              </Link>
+            ))}
+            
             
           
 

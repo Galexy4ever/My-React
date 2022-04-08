@@ -1,6 +1,13 @@
 import { ListItem } from '@mui/material';
+import { useParams } from 'react-router-dom';
 
-const AllMessages = ({messages}) => {
+const AllMessages = ({chats}) => {
+    let {chatId} = useParams()
+
+    if (!chats[chatId]) return null;
+
+    const messages = chats[chatId].messages
+
     return (
         <div>
             {
