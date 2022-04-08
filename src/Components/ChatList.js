@@ -1,33 +1,32 @@
-// import { useParams } from "react-router-dom"
-import { Link } from "@mui/material/"
-import { ListItem} from "@mui/material"
-import { ListItemText } from '@mui/material';
+
+import { Link } from 'react-router-dom'
+import { ListItem, List} from "@mui/material"
+import { ListItemText, IconButton } from '@mui/material';
+
 
 
 const ChatList = ({chats}) => {
 
-    // let {chatId}   = useParams()
+  
     return (
         <div>
             <h1>ChatList</h1>
-            
-            {Object.keys(chats).map((chat, index) => (
-                <Link to = {'/chats/${chat}'} key={index} >
+                <List>
+                    {Object.keys(chats).map((chat, index) => (
+                    <Link to = {`/chats/${chat}`} key={index} >
+                        
+                    <ListItem key={index}
+                    secondaryAction= {
+                        <IconButton edge='end' aria-label='delete' >
+                            
+                        </IconButton>
+                    }>
+                            <ListItemText primary =  {chats[chat].name} />
                 
-              <ListItem key={index}
-              >
-                  <ListItemText primary =  {chats[chat].name} >
-                  
-              
-              </ListItemText>
-               
-              </ListItem>  
-              </Link>
-            ))}
-            
-            
-          
-
+                    </ListItem>  
+                    </Link>
+                    ))}
+                </List>
         </div>
     )
 }

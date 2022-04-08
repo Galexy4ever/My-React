@@ -21,7 +21,7 @@ const Chats = ({chats}) => {
     return (
         <div>
             <ChatList chats={chats} />
-            <AllMessages messages={chats} title="Сообщения" />
+            <AllMessages chats={chats} title="Сообщения" />
         </div>
     )
 }

@@ -24,7 +24,7 @@ const chatList = {
 
 const Router = () => {
 
-    const [chats, setChats] = useState(chatList)
+    const [chats] = useState(chatList)
     return (
     <BrowserRouter>
 

@@ -19,7 +19,7 @@ ReactDOM.render(
 
 <ThemeProvider theme={theme}>
 
-<App />,
+<App />
 </ThemeProvider>,
 
 
