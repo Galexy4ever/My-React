@@ -4,14 +4,11 @@ import { List, ListItem } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
 import React, { useState, useEffect } from 'react';
+import { AUTHOR } from './common';
 
 const ControlPanel = () => {
     const [messages, setMessages] =
-        useState([
-            { id: 164897631820, userMessage: "ewgegw", userName: "Alex" },
-            { id: 16489763182, userMessage: "ewgegw", userName: "Alex" }],
-            [{ id: 1648976318, userMessage: "ewgegw", userName: "Alex" }],
-            [{ id: 164897631, userMessage: "ewgegw", userName: "Ale" }],
+        useState([],
 
         )
 

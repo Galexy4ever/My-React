@@ -5,6 +5,8 @@ import Chats from "./Chats"
 import { useState } from "react"
 import { AUTHOR } from "../Components/common"
 
+
+
 const chatList = {
     id1: {
         name: 'chat1',
@@ -25,7 +27,17 @@ const chatList = {
 const Router = () => {
 
     const [chats] = useState(chatList)
+
+// const personMessage = () => {
+
+// }
+
     return (
+<>
+
+
+
+
     <BrowserRouter>
 
     
@@ -56,6 +68,7 @@ const Router = () => {
     </Routes>
 
     </BrowserRouter>
+    </>
     )
 }
 

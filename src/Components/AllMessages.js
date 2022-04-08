@@ -1,5 +1,6 @@
 import { ListItem } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import Message from './Message';
 
 const AllMessages = ({chats}) => {
     let {chatId} = useParams()
@@ -17,7 +18,8 @@ const AllMessages = ({chats}) => {
                      <hr /></ListItem>
                 )
                 )
-            }       
+            }  
+            <Message />     
         </div>
     )
 }
