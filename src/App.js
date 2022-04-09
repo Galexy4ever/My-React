@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.sass';
 
+import Router from "./pages/Router";
 
 
 function App() {
-    return (
-    <div className="Text">
-        Message
+
     
+
+    return (
+    
+        
+    
+    <div className="App">
+    <Router /> 
+  
+ 
     </div>
+
+    
+   
    
     
     );
