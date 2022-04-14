@@ -1,15 +1,44 @@
 
 import { Link } from 'react-router-dom'
-import { ListItem, List} from "@mui/material"
-import { ListItemText, IconButton } from '@mui/material';
+import { ListItem, List, Dialog, DialogTitle, TextField} from "@mui/material"
+import { ListItemText, Button,Paper } from '@mui/material';
+import { IconButton } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { addChat } from './store/chats/actions';
 
-const ChatList = ({chats}) => {
+
+
+const ChatList = () => {
+    const chats = useSelector(state => state.chats.chatList)
+    const [chatName, setChatName] = useState('')
+    const [visible, setVisible] = useState(false)
+    const dispatch = useDispatch()
+
+    const handleChatName = (e) => {
+        setChatName(e.target.value)
+    }
+
+    const handleClose = () => {
+        setVisible(false)
+    }
+    const handleAdd = () => {
+        setVisible(true)
+    }
+    const handleSave = () => {
+        dispatch(addChat(chatName))
+        setChatName()
+        handleClose()
+    }
+    
+
+
 
     return (
         <div>
             <h1>ChatList</h1>
                 <List>
-                    {Object.keys(chats).map((chat, index) => (
+                    {chats?.length > 0 ? chats.map((chat, index) => (
                     <Link to = {`/chats/${chat}`} key={index} >
                         
                     <ListItem key={index}
@@ -18,12 +47,24 @@ const ChatList = ({chats}) => {
                             
                         </IconButton>
                     }>
-                            <ListItemText primary =  {chats[chat].name} />
+                            <ListItemText primary =  {chat.name} />
                 
                     </ListItem>                
                     </Link>
-                    ))}                   
+                    )) : <div>NO CHATS</div> }                   
                 </List>
+                <Button onClick={handleAdd}>Add Chat</Button>
+                <Paper>
+                <Dialog open={visible} onClose={handleClose}>
+                    <DialogTitle>Enter chat's name</DialogTitle>
+                    <TextField
+                        placeholder='Chat name'
+                        value={chatName}
+                        onChange= {handleChatName}
+                    />
+                    <Button onClick={handleSave}>Save name chat</Button>
+                </Dialog>
+                </Paper>
                 
         </div>
     )

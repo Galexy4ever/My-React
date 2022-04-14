@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 const AllMessages = ({chats}) => {
     let {chatId} = useParams()
-    const { name } = useSelector((state) => state)
+    const { name } = useSelector((state) => state.profile)
 
     if (!chats[chatId]) return null;
 
