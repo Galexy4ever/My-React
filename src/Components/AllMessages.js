@@ -16,12 +16,9 @@ const AllMessages = ({chats}) => {
                 messages.map((post, index) => (
                     <ListItem key={index}>Имя: {post.text} <br /> 
                      Сообщение: {post.author}
-                     <hr /></ListItem>
-                     
+                     <hr /></ListItem>                   
                 )
-                
-                )
-                
+                )               
             } 
             <ControlPanel /> 
             <Message />     

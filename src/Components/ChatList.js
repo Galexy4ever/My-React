@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom'
 import { ListItem, List} from "@mui/material"
 import { ListItemText, IconButton } from '@mui/material';
 
-
-
 const ChatList = ({chats}) => {
 
-  
     return (
         <div>
             <h1>ChatList</h1>
@@ -23,11 +20,9 @@ const ChatList = ({chats}) => {
                     }>
                             <ListItemText primary =  {chats[chat].name} />
                 
-                    </ListItem>  
-                    
+                    </ListItem>                
                     </Link>
-                    ))}
-                    
+                    ))}                   
                 </List>
                 
         </div>

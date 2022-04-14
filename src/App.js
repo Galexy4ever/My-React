@@ -1,29 +1,13 @@
 import React from "react";
 import './App.sass';
-
 import Router from "./pages/Router";
 
-
 function App() {
-
-    
-
-    return (
-    
-        
-    
+    return (   
     <div className="App">
     <Router /> 
-  
- 
-    </div>
-
-    
-   
-   
-    
-    );
-  
+    </div> 
+    ); 
 }
 
 export default App;

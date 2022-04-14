@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-
-
 const Message = () => {
-
-
 
     const [messages, setMessages] =
         useState([
@@ -14,11 +10,6 @@ const Message = () => {
             [{ id: 164897631, userMessage: "ewgegw", userName: "Ale" }],
 
         )
-
-
-
-
-
     return (
         <div></div>
     )

@@ -69,8 +69,6 @@ const ControlPanel = () => {
                             disablePadding
                         >
                             ID: {chat.id}<br /> Имя: {chat.userName}   <hr /></ListItem>
-
-
                     )
                     )
                 }
