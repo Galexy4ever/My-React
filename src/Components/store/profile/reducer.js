@@ -1,15 +1,22 @@
-import { CHECKACTION } from "./actions";
+import { CHECKACTION, UPDATE_NAME } from "./actions";
 
 const initialStore = {
-    checkIn: false,
-    testStatus: 'Working...'
+    youName: true,
+    name: 'Alex'
 }
 
 const profileReducer = (state = initialStore, action) => {
     switch (action.type) {
         case CHECKACTION:
             return {
-                ...state, checkIn: !state.checkIn
+                ...state, youName: !state.youName
+            }
+
+        case UPDATE_NAME:
+            console.log(action)
+            return {
+               ...state,
+               name: action.payload 
             }
             default:
                 return state

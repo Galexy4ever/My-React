@@ -14,7 +14,9 @@ const chatList = {
     },
     id2: {
         name: 'chat2',
-        messages: [{ text: 'Massage second', author: AUTHOR.me}]
+        messages: [{ text: 'Massage second', author:'fdssgsv'},
+        { text: 'Massage second', author: AUTHOR.bot},
+        { text: 'Massage second', author: 'Alex'}]
     },
     id3: {
         name: 'chat3',

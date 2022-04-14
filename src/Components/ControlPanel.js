@@ -57,7 +57,7 @@ const ControlPanel = () => {
 
     return (
     <div>
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', color: 'text.primary' }}>
+        {/* <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', color: 'text.primary' }}>
                 {
                     messages.map((chat, userName, id) => (
                         <ListItem
@@ -72,7 +72,7 @@ const ControlPanel = () => {
                     )
                     )
                 }
-        </List>
+        </List> */}
         
         <TextField id="margin-normal" margin="normal" label="Введите имя"
 
