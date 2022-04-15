@@ -35,7 +35,7 @@ const ControlPanel = () => {
     }
 
     useEffect(() => {
-        console.log(authorName)
+        
         let timeOut;
         if (messages?.length > 0 &&
             messages[messages.length - 1].author !== AUTHOR.bot){
