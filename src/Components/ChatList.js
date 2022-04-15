@@ -38,10 +38,10 @@ const ChatList = () => {
         <div>
             <h1>ChatList</h1>
                 <List>
-                    {chats?.length > 0 ? chats.map((chat, index) => (
-                    <Link to = {`/chats/${chat}`} key={index} >
+                    {chats?.length > 0 ? chats.map((chat) => (
+                    <Link to = {`/chats/${chat.id}`} key={chat.id} >
                         
-                    <ListItem key={index}
+                    <ListItem 
                     secondaryAction= {
                         <IconButton edge='end' aria-label='delete' >
                             

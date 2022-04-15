@@ -1,62 +1,55 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { List, ListItem } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import CommentIcon from '@mui/icons-material/Comment';
-import React, { useState, useEffect } from 'react';
-import { AUTHOR } from './common';
+// import { List, ListItem } from '@mui/material';
+// import IconButton from '@mui/material/IconButton';
+// import CommentIcon from '@mui/icons-material/Comment';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMessage } from './store/messages/actions';
+import { useParams } from 'react-router-dom';
 
 const ControlPanel = () => {
-    const [messages, setMessages] =
-        useState([],
+    let { chatId } = useParams()
+    const [value, setValue] =
+        useState([])
+    const dispatch = useDispatch()
+    const authorName = useSelector(state => state.profile.name)
 
-        )
-
-    const [userName, setNames] = useState()
-    const [userMessage, setUserMessages] = useState()
-
-    const addMessage = (e) => {
-        console.log(e)
-
-        if (e.key === 'Enter' || e.type === 'click') {
-
+    const hendleInput = (event) => {
+       setValue(event.target.value)
+    }
+    const hendleAdd = (e) => {
+        e.preventDefault()
+        if (value !== '') {
             const newMessage = {
-                id: Date.now(),
-                userName,
-                userMessage
+                text: value,
+                author: authorName
             }
             console.log(newMessage)
-
-
-            setMessages([...messages, newMessage])
-            setNames('')
-            setUserMessages('')
+            
+            dispatch(addMessage([chatId, newMessage]))
+            setValue('')
+            
         }
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        setTimeout(() => {
+    //     setTimeout(() => {
+    //         if (messages[messages.length - 1].userName === authorName) {
+    //              const newMessage = {
+    //                 id: Date.now(),
+    //                 userName: 'Bot',
+    //                 userMessage: 'Привет!'
+    //             }
+    //             setMessages([...messages, newMessage])
+    //         }
 
-
-            if (messages[messages.length - 1].userName === AUTHOR.me) {
-                console.log(messages[messages.length - 1].userName)
-
-                const newMessage = {
-                    id: Date.now(),
-                    userName: 'Bot',
-                    userMessage: 'Привет!'
-                }
-                setMessages([...messages, newMessage])
-
-
-            }
-
-        }, 1500);
-    }, [messages])
-
+    //     }, 1500);
+    // }, [messages]
+    // )
     return (
-    <div>
+    <div className='controlPanel'>
         {/* <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', color: 'text.primary' }}>
                 {
                     messages.map((chat, userName, id) => (
@@ -74,7 +67,7 @@ const ControlPanel = () => {
                 }
         </List> */}
         
-        <TextField id="margin-normal" margin="normal" label="Введите имя"
+        {/* <TextField id="margin-normal" margin="normal" label="Введите имя"
 
 
         type="text"
@@ -83,22 +76,21 @@ const ControlPanel = () => {
         event => setNames(event.target.value)}
         onKeyPress={addMessage}>
 
-        </TextField>
+        </TextField> */}
 
 
         <TextField id="margin-normal" margin="normal" label="Введите cообщение" variant="outlined"
         placeholder="Введите cообщение"
         type="text"
-        value={userMessage}
-        onChange={
-            event => setUserMessages(event.target.value)}
-        onKeyPress={addMessage}>
+        value={value}
+        onChange={hendleInput}>
 
         </TextField>        
 
-        <Button size="medium" variant="outlined" id="userButton" className="userButton" onClick={addMessage}>Добавить сообщение
+        <Button size="medium" variant="outlined" id="userButton" className="userButton" onClick={hendleAdd}>Добавить сообщение
         </Button>
         <br />
+        
     </div>
     )
 }
