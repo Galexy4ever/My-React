@@ -24,23 +24,20 @@ const AllMessages = () => {
         <>
         
         <div>
+        <List sx={{ width: '100%', maxWidth: 360 }}>
             {
                 messages.map((post) => (
                     
-                    <ListItem key={post.id}>
-                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                    
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar key={post.id}>
-          <Avatar alt="Remy Sharp" >
-           {ifBot(post.author) ? (<AndroidIcon />) : (<MessageIcon />)}
-            
-          </Avatar>
+            <ListItem key={post.id}>            
+                <ListItem alignItems="flex-start">
+                      <ListItemAvatar key={post.id}>
+                      <Avatar alt="Remy Sharp" >
+                      {ifBot(post.author) ? (<AndroidIcon />) : (<MessageIcon />)}
+                      </Avatar>
           
-        </ListItemAvatar>
+                      </ListItemAvatar>
         
-        <ListItemText
-        
+          <ListItemText
           primary={ifBot(post.author) ? AUTHOR.bot : name}
           secondary={
               <Typography
@@ -48,19 +45,20 @@ const AllMessages = () => {
                 component="span"
                 variant="body2"
                 color="text.primary"
-              >
+          >
                {post.text}
               </Typography> 
           }
         />
-      </ListItem>
+            </ListItem>
       
-      </List>  
-        <Divider variant="inset" component="li" />
-        </ListItem>                   
-                )
-                )               
-            } 
+        
+              <Divider variant="inset" component="li" />
+              </ListItem>                   
+                      )
+                      )               
+                  } 
+            </List>
     
         </div>
         

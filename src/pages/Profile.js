@@ -5,7 +5,7 @@ import { Button, TextField } from "@mui/material"
 
 const Profile = () => {
 
-const {youName, name} = useSelector((state) => state.profile)
+const {youName, name} = useSelector(state => state.profile)
 const dispatch = useDispatch()
 const [userName, setName] = useState(name)
 const setCkickMessage = useCallback(() => {

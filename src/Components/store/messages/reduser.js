@@ -10,7 +10,7 @@ const messagesReduser = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE: {
             const {chatId, message} = action.payload
-            const oldMessages = state.messageList[chatId] || []
+            const oldMessages = state.messageList[chatId] || [];
             return {
                 ...state,
                 messageList: {

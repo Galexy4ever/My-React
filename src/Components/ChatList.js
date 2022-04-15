@@ -1,11 +1,12 @@
 
 import { Link } from 'react-router-dom'
 import { ListItem, List, Dialog, DialogTitle, TextField} from "@mui/material"
-import { ListItemText, Button,Paper } from '@mui/material';
+import { ListItemText, Button } from '@mui/material';
 import { IconButton } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { addChat } from './store/chats/actions';
+
 
 
 
@@ -14,7 +15,7 @@ const ChatList = () => {
     const [chatName, setChatName] = useState('')
     const [visible, setVisible] = useState(false)
     const dispatch = useDispatch()
-
+    
     const handleChatName = (e) => {
         setChatName(e.target.value)
     }
@@ -54,7 +55,7 @@ const ChatList = () => {
                     )) : <div>NO CHATS</div> }                   
                 </List>
                 <Button onClick={handleAdd}>Add Chat</Button>
-                <Paper>
+                
                 <Dialog open={visible} onClose={handleClose}>
                     <DialogTitle>Enter chat's name</DialogTitle>
                     <TextField
@@ -64,7 +65,7 @@ const ChatList = () => {
                     />
                     <Button onClick={handleSave}>Save name chat</Button>
                 </Dialog>
-                </Paper>
+               
                 
         </div>
     )

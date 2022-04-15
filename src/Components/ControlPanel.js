@@ -3,18 +3,19 @@ import Button from '@mui/material/Button';
 // import { List, ListItem } from '@mui/material';
 // import IconButton from '@mui/material/IconButton';
 // import CommentIcon from '@mui/icons-material/Comment';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMessage } from './store/messages/actions';
 import { useParams } from 'react-router-dom';
+import { AUTHOR } from './common';
 
 const ControlPanel = () => {
     let { chatId } = useParams()
-    const [value, setValue] =
-        useState([])
+    const [value, setValue] = useState('')
     const dispatch = useDispatch()
     const authorName = useSelector(state => state.profile.name)
-
+    const allMessages = useSelector(state => state.messages.messageList)
+    const messages = allMessages[chatId] || []
     const hendleInput = (event) => {
        setValue(event.target.value)
     }
@@ -27,27 +28,33 @@ const ControlPanel = () => {
             }
             console.log(newMessage)
             
-            dispatch(addMessage([chatId, newMessage]))
+            dispatch(addMessage(chatId, newMessage))
             setValue('')
             
         }
     }
 
-    // useEffect(() => {
+    useEffect(() => {
+        console.log(authorName)
+        let timeOut;
+        if (messages?.length > 0 &&
+            messages[messages.length - 1].author !== AUTHOR.bot){
 
-    //     setTimeout(() => {
-    //         if (messages[messages.length - 1].userName === authorName) {
-    //              const newMessage = {
-    //                 id: Date.now(),
-    //                 userName: 'Bot',
-    //                 userMessage: 'Привет!'
-    //             }
-    //             setMessages([...messages, newMessage])
-    //         }
+                const newMessage = {
+                    text: 'Привет! Я Bot!',
+                    author: AUTHOR.bot   
+                }       
+        timeOut = setTimeout(() => {
+            dispatch(addMessage(chatId, newMessage))
+        }, 1500);
+    }
+        return () => {
+            if (timeOut) {
+                clearInterval(timeOut)
+            }
+        }
+    }, [messages, chatId])
 
-    //     }, 1500);
-    // }, [messages]
-    // )
     return (
     <div className='controlPanel'>
         {/* <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', color: 'text.primary' }}>
