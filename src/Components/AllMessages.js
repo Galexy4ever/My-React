@@ -4,7 +4,7 @@ import MessageIcon from '@mui/icons-material/Message'
 import { useParams } from 'react-router-dom';
 import { AUTHOR } from './common';
 import { useSelector } from 'react-redux';
-
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const AllMessages = () => {
     
@@ -47,9 +47,13 @@ const AllMessages = () => {
                 color="text.primary"
           >
                {post.text}
-              </Typography> 
+               
+              </Typography>
+               
           }
+          
         />
+            <DeleteIcon />
             </ListItem>
       
         

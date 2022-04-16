@@ -6,7 +6,7 @@ import { IconButton } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { addChat } from './store/chats/actions';
-
+import ClearIcon from '@mui/icons-material/Clear';
 
 
 
@@ -49,7 +49,7 @@ const ChatList = () => {
                         </IconButton>
                     }>
                             <ListItemText primary =  {chat.name} />
-                
+                            <ClearIcon />
                     </ListItem>                
                     </Link>
                     )) : <div>NO CHATS</div> }                   

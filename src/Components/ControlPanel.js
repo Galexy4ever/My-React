@@ -5,17 +5,17 @@ import Button from '@mui/material/Button';
 // import CommentIcon from '@mui/icons-material/Comment';
 import React, { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessage } from './store/messages/actions';
 import { useParams } from 'react-router-dom';
-import { AUTHOR } from './common';
+import { addMessageWithThurk } from './store/messages/actions'; 
+
 
 const ControlPanel = () => {
     let { chatId } = useParams()
     const [value, setValue] = useState('')
     const dispatch = useDispatch()
     const authorName = useSelector(state => state.profile.name)
-    const allMessages = useSelector(state => state.messages.messageList)
-    const messages = allMessages[chatId] || []
+   
+    
     const hendleInput = (event) => {
        setValue(event.target.value)
     }
@@ -28,7 +28,7 @@ const ControlPanel = () => {
             }
             console.log(newMessage)
             
-            dispatch(addMessage(chatId, newMessage))
+            dispatch(addMessageWithThurk(chatId, newMessage))
             setValue('')
             
         }
@@ -37,23 +37,23 @@ const ControlPanel = () => {
     useEffect(() => {
         
         let timeOut;
-        if (messages?.length > 0 &&
-            messages[messages.length - 1].author !== AUTHOR.bot){
+    //     if (messages?.length > 0 &&
+    //         messages[messages.length - 1].author !== AUTHOR.bot){
 
-                const newMessage = {
-                    text: 'Привет! Я Bot!',
-                    author: AUTHOR.bot   
-                }       
-        timeOut = setTimeout(() => {
-            dispatch(addMessage(chatId, newMessage))
-        }, 1500);
-    }
-        return () => {
-            if (timeOut) {
-                clearInterval(timeOut)
-            }
-        }
-    }, [messages, chatId])
+    //             const newMessage = {
+    //                 text: 'Привет! Я Bot!',
+    //                 author: AUTHOR.bot   
+    //             }       
+    //     timeOut = setTimeout(() => {
+    //         dispatch(addMessage(chatId, newMessage))
+    //     }, 1500);
+    // }
+    //     return () => {
+    //         if (timeOut) {
+    //             clearInterval(timeOut)
+    //         }
+    //     }
+    }, [])
 
     return (
     <div className='controlPanel'>

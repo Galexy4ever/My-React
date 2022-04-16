@@ -1,11 +1,12 @@
-
+import { PersistGate } from 'redux-persist/integration/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from "react-redux";
-import store from './Components/store/index';
 import {createTheme, ThemeProvider } from '@mui/material/styles'
-
+import persistor from './Components/store/index';
+import {store} from './Components/store/index'
+import { CircularProgress } from '@mui/material';
 const theme = createTheme({
   palette: {
     mode: 'light'
@@ -16,14 +17,16 @@ const theme = createTheme({
 
 
 ReactDOM.render(
-
+  <Provider store = {store}>
+  <PersistGate persistor={persistor} loading ={<CircularProgress />}>
 <ThemeProvider theme={theme}>
 
-<Provider store = {store}>
-<App />
-</Provider>
-</ThemeProvider>,
 
+<App />
+
+</ThemeProvider>
+</PersistGate>
+</Provider>,
 
 
   document.getElementById('root')
