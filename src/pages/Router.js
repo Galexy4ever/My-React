@@ -4,6 +4,7 @@ import  Profile  from "./Profile"
 import Chats from "./Chats"
 import { useState } from "react"
 import { AUTHOR } from "../Components/common"
+import Gists from "./Gists"
 
 
 
@@ -54,6 +55,9 @@ const Router = () => {
         <li>
            <Link to='/chats'>Chats</Link> 
         </li>
+        <li>
+           <Link to='/gists'>Gists</Link> 
+        </li>
         
     </ul>
     
@@ -64,6 +68,7 @@ const Router = () => {
     <Routes>
         <Route path="/home" element={<Home />} /> 
         <Route path="/profile" element={<Profile />} />
+        <Route path="/gists" element={<Gists />} />
         <Route path="/chats/:chatId" element={<Chats chats={chats} />} />
         <Route path="*" element={<Chats chats={chats} />} />
 

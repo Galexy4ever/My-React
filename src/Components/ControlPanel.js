@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 // import { List, ListItem } from '@mui/material';
 // import IconButton from '@mui/material/IconButton';
 // import CommentIcon from '@mui/icons-material/Comment';
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addMessageWithThurk } from './store/messages/actions'; 
@@ -34,26 +34,26 @@ const ControlPanel = () => {
         }
     }
 
-    useEffect(() => {
+    // useEffect(() => {
         
-        let timeOut;
-    //     if (messages?.length > 0 &&
-    //         messages[messages.length - 1].author !== AUTHOR.bot){
+    //     let timeOut;
+    // //     if (messages?.length > 0 &&
+    // //         messages[messages.length - 1].author !== AUTHOR.bot){
 
-    //             const newMessage = {
-    //                 text: 'Привет! Я Bot!',
-    //                 author: AUTHOR.bot   
-    //             }       
-    //     timeOut = setTimeout(() => {
-    //         dispatch(addMessage(chatId, newMessage))
-    //     }, 1500);
-    // }
-    //     return () => {
-    //         if (timeOut) {
-    //             clearInterval(timeOut)
-    //         }
-    //     }
-    }, [])
+    // //             const newMessage = {
+    // //                 text: 'Привет! Я Bot!',
+    // //                 author: AUTHOR.bot   
+    // //             }       
+    // //     timeOut = setTimeout(() => {
+    // //         dispatch(addMessage(chatId, newMessage))
+    // //     }, 1500);
+    // // }
+    // //     return () => {
+    // //         if (timeOut) {
+    // //             clearInterval(timeOut)
+    // //         }
+    // //     }
+    // }, [])
 
     return (
     <div className='controlPanel'>
