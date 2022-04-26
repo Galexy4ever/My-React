@@ -8,14 +8,17 @@ export const STATUSES = {
 }
 
 
-export const initialState = {
+const initialState = {
     gists:[],
     request: STATUSES.IDLE,
     error: null,
     loading: false
 }
 
-export const gistsReduser = (state = initialState, action) => {
+
+
+
+const gistsReduser = (state = initialState, action) => {
     switch (action.type) {
         case GET_GISTS_REQUEST:
             return {
@@ -26,7 +29,7 @@ export const gistsReduser = (state = initialState, action) => {
 
         case GET_GISTS_SUCCESS:
                 return {
-                    ...state,
+                ...state,
                 request: STATUSES.SUCCESS,
                 gists: action.payload,
                 loading: false
@@ -41,6 +44,7 @@ export const gistsReduser = (state = initialState, action) => {
                     }
         default:
             return state
+            
     }
 }
 
