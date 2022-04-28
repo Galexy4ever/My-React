@@ -21,10 +21,10 @@ const reducers = combineReducers({
     gists: gistsReduser
 })
 
-const persisstedReduser = persistReducer(persistConfig, reducers)
+const persistedReduser = persistReducer(persistConfig, reducers)
 
 
-export const store = createStore(persisstedReduser,composeEnhancers(applyMiddleware(thunk)))
+export const store = createStore(persistedReduser,composeEnhancers(applyMiddleware(thunk)))
 
 const persistor = persistStore(store)
 

@@ -3,26 +3,35 @@ import AndroidIcon from '@mui/icons-material/Android'
 import MessageIcon from '@mui/icons-material/Message'
 import { useParams } from 'react-router-dom';
 import { AUTHOR } from './common';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useEffect } from 'react';
+import { getMessagesByChatIdWithFB } from '../middleware/middleware';
 
 const AllMessages = () => {
     
     const myMessages = useSelector(state => state.messages.messageList)
     const { name }  = useSelector(state => state.profile)
     let {chatId} = useParams()
+    const dispatch = useDispatch()
 
     if (!myMessages[chatId]) return null;
 
     const messages = myMessages[chatId]
 
+   
+
     const ifBot = (author) => {
         return author === AUTHOR.bot
     }
 
+    useEffect(() => {
+        dispatch(getMessagesByChatIdWithFB(chatId))
+    }, [chatId])
+
     return (
         <>
-        
+         
         <div>
         <List sx={{ width: '100%', maxWidth: 360 }}>
             {

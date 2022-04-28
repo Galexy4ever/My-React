@@ -2,6 +2,7 @@ import { AUTHOR } from "../../common"
 
 export const ADD_MESSAGE = 'MESSAGE::ADDMESSAGE'
 export const ADD_MESSAGE_WITH_SAGA = 'ADD_MESSAGE_WITH_SAGA'
+export const UPDATE_MESSAGES = 'MESSAGE::UPDATE_MESSAGES'
 export const addMessage = (chatId, message) => ({
     type: ADD_MESSAGE,
     payload: { chatId, message}
@@ -27,3 +28,9 @@ export const addMessageWithThurk =
         setTimeout(() => dispatch(addMessage(chatId, botMessage)), 1500);
     }
 }
+
+export const updateMessages = (chatId, messages) =>({
+    type: UPDATE_MESSAGES,
+    chatId,
+    messages
+}) 

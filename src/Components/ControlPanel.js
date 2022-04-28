@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addMessageWithThurk } from './store/messages/actions'; 
+import { addMessageWithFB } from '../middleware/middleware';
 
 
 const ControlPanel = () => {
@@ -28,7 +29,7 @@ const ControlPanel = () => {
             }
             console.log(newMessage)
             
-            dispatch(addMessageWithThurk(chatId, newMessage))
+            dispatch(addMessageWithFB(chatId, newMessage))
             setValue('')
             
         }

@@ -36,6 +36,7 @@ const ChatList = () => {
 
     const deleteChat = (id) => {
         dispatch(deleteChatWithFB(id))
+     
     }
     
     useEffect(() => {
@@ -47,21 +48,25 @@ const ChatList = () => {
         <div>
             <h1>ChatList</h1>
                 <List>
-                    {chats?.length > 0 ? chats.map((chat) => (
+                    {chats?.length > 0 ? (
+                        chats.map((chat) => (
                     <Link to = {`/chats/${chat.id}`} key={chat.id} >
                         
                     <ListItem 
                     secondaryAction= {
-                        <IconButton edge='end' aria-label='delete' onClick={() => deleteChat(chat.id)} >
+                        <IconButton edge='end' aria-label='delete' onClick={
+                            () => deleteChat(chat.id)} >
                             <DeleteIcon />
                         </IconButton>
                     }>
                             <ListItemText primary =  {chat.name} />
-                            <ClearIcon />
+                            
                     </ListItem>                
                     </Link>
-                    )) : <div>NO CHATS</div> }                   
+                    )) 
+                    ) : (<div>NO CHATS</div>) }                   
                 </List>
+                    
                 <Button onClick={handleAdd}>Add Chat</Button>
                 
                 <Dialog open={visible} onClose={handleClose}>
