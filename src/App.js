@@ -1,11 +1,14 @@
 import React from "react";
 import './App.sass';
+import { AuthProvider } from "./hooks/AuthProvider";
 import Router from "./pages/Router";
 
 function App() {
     return (   
     <div className="App">
-    <Router /> 
+    <AuthProvider>
+        <Router /> 
+    </AuthProvider>
     </div> 
     ); 
 }

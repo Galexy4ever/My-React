@@ -1,5 +1,8 @@
 import { AUTHOR } from "../Components/common";
 import { addMessage, ADD_MESSAGE } from "../Components/store/messages/actions";
+import firebaseConfig from "../services/firebaseConfig";
+import { getDatabase, onValue, push, ref, remove, set } from 'firebase/database'
+import { validateCallback } from "@firebase/util";
 
 const middleware = (store) => (next) => (action) => {
     console.log("it's working!!!")
@@ -15,6 +18,41 @@ const middleware = (store) => (next) => (action) => {
     return next(action)
 }
 
+export const initTrackerWithFB = () => async (dispatch) => {
+    const db = getDatabase(firebaseConfig)
+    const chatRef = ref(db, '/chats')
+    onValue(chatRef, (snapshot) => {
+        const data = snapshot.val()
+        const chatIds = Object.keys(data)
+        const chatArr = chatIds.map(item => ({
+            id: item,
+            name: data[item].name
+        }))
+        dispatch(chatListUpdate(chatArr))
+    })
+}
+
+export const addChatWithFB = (name) => async () => {
+    const db = getDatabase(firebaseConfig)
+    const chatRef = ref(db, '/chats')
+    const newChatRef = push(chatRef)
+    set(newChatRef, {name:name}).then((res) => {
+        console.log('chat added', res)
+    })
+    
+}
+
+export const deleteChatWithFB = (name) => async () => {
+    const db = getDatabase(firebaseConfig)
+    const chatRef = ref(db, `/chats${id}`)
+    const messagesRef = ref(db, `/messages/${id}`)
+    remove(chatRef).then((res) =>  {
+        console.log('chat removed', res)
+    })
+    remove(messagesRef).then((ref) => {
+        console.log('Messages deleted', res)
+    })
+}
 
 
 export default middleware

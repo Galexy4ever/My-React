@@ -5,6 +5,11 @@ import Chats from "./Chats"
 import { useState } from "react"
 import { AUTHOR } from "../Components/common"
 import Gists from "./Gists"
+import Login from "./Login"
+import Registration from "./Registration"
+import RequireAuth from "../hocs/RequireAuth"
+
+
 
 
 
@@ -58,6 +63,12 @@ const Router = () => {
         <li>
            <Link to='/gists'>Gists</Link> 
         </li>
+        <li>
+           <Link to='/login'>Login</Link> 
+        </li>
+        <li>
+           <Link to='/registration'>Registration</Link> 
+        </li>
         
     </ul>
     
@@ -67,10 +78,18 @@ const Router = () => {
 
     <Routes>
         <Route path="/home" element={<Home />} /> 
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/gists" element={<Gists />} />
-        <Route path="/chats/:chatId" element={<Chats chats={chats} />} />
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/registration" element={<Registration />} />
+        <Route element={<RequireAuth />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/gists" element={<Gists />} />
+            <Route index path="/chats" element={<Gists />} />
+            <Route path=":chatId" element={<Chats />} />
+        </Route>
+        
+       
         <Route path="*" element={<Chats chats={chats} />} />
+         
 
     </Routes>
 
