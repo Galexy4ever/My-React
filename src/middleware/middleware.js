@@ -3,6 +3,7 @@ import { addMessage, ADD_MESSAGE } from "../Components/store/messages/actions";
 import firebaseConfig from "../services/firebaseConfig";
 import { getDatabase, onValue, push, ref, remove, set } from 'firebase/database'
 import { validateCallback } from "@firebase/util";
+import { chatListUpdate } from "../Components/store/chats/actions";
 
 const middleware = (store) => (next) => (action) => {
     console.log("it's working!!!")
@@ -42,14 +43,14 @@ export const addChatWithFB = (name) => async () => {
     
 }
 
-export const deleteChatWithFB = (name) => async () => {
+export const deleteChatWithFB = (id) => async () => {
     const db = getDatabase(firebaseConfig)
     const chatRef = ref(db, `/chats${id}`)
     const messagesRef = ref(db, `/messages/${id}`)
     remove(chatRef).then((res) =>  {
         console.log('chat removed', res)
     })
-    remove(messagesRef).then((ref) => {
+    remove(messagesRef).then((res) => {
         console.log('Messages deleted', res)
     })
 }
