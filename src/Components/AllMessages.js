@@ -14,9 +14,6 @@ const AllMessages = () => {
     const { name }  = useSelector(state => state.profile)
     let {chatId} = useParams()
     const dispatch = useDispatch()
-
-    if (!myMessages[chatId]) return null;
-
     const messages = myMessages[chatId]
 
    
@@ -35,7 +32,7 @@ const AllMessages = () => {
         <div>
         <List sx={{ width: '100%', maxWidth: 360 }}>
             {
-                messages.map((post) => (
+                messages?.map((post) => (
                     
             <ListItem key={post.id}>            
                 <ListItem alignItems="flex-start">

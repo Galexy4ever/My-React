@@ -83,8 +83,7 @@ const Router = () => {
         <Route element={<RequireAuth />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/gists" element={<Gists />} />
-            <Route index path="/chats" element={<Gists />} />
-            <Route path=":chatId" element={<Chats />} />
+            <Route path="/chats/:chatId" element={<Chats />} />
         </Route>
         
        
